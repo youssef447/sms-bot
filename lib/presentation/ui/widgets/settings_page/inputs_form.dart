@@ -20,7 +20,7 @@ class InputsForm extends GetView<SmsSettingsController> {
               SizedBox(width: 6.w),
               Text(
                 'Enter Email Address',
-                style: Theme.of(context).textTheme.headlineLarge,
+                style: AppTextStyle.font16BoldText,
               ),
             ],
           ),
@@ -43,7 +43,7 @@ class InputsForm extends GetView<SmsSettingsController> {
               SizedBox(width: 6.w),
               Text(
                 'Enter Telegram user ID',
-                style: Theme.of(context).textTheme.headlineLarge,
+                style: AppTextStyle.font16BoldText,
               ),
             ],
           ),

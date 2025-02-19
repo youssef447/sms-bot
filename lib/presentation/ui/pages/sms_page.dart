@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:sms_sender/core/helpers/route_navigation_helper.dart';
+import 'package:sms_sender/core/theme/app_text_style.dart';
 import 'package:sms_sender/core/widgets/animations/horizontal_animation.dart';
 import 'package:sms_sender/core/widgets/checkbox/app_checkbox.dart';
 
@@ -76,71 +77,78 @@ class SmsPage extends StatelessWidget {
                 body: SafeArea(
                     child: SlideAnimation(
                   leftToRight: true,
-                  child: ListView.separated(
-                    padding: EdgeInsets.all(16.h),
-                    itemBuilder: (context, index) {
-                      return GetBuilder<SmsController>(
-                          id: 'checkbox $index',
-                          builder: (controller) {
-                            return Row(
-                              children: [
-                                AnimatedSwitcher(
-                                  duration: const Duration(milliseconds: 200),
-                                  transitionBuilder: (child, animation) {
-                                    return SizeTransition(
-                                      sizeFactor: animation,
-                                      axis: Axis.horizontal,
-                                      child: child,
-                                    );
-                                  },
-                                  child: controller.showCheckboxes
-                                      ? Padding(
-                                          padding: EdgeInsetsDirectional.only(
-                                              end: 5.w),
-                                          child: AppCheckbox(
-                                            value: controller.checkboxes[index],
-                                            onChanged: (v) {
-                                              controller.toggleCheckboxIndex(
-                                                v ?? false,
-                                                index,
-                                              );
-                                            },
-                                          ),
-                                        )
-                                      : const SizedBox(),
-                                ),
-                                Expanded(
-                                  child: GestureDetector(
-                                    onTap: () {
-                                      if (controller.showCheckboxes) {
-                                        controller.toggleCheckboxIndex(
-                                          !controller.checkboxes[index],
-                                          index,
-                                        );
-                                      }
+                  child: RefreshIndicator(
+                    onRefresh: () {
+                      return controller.getSms();
+                    },
+                    child: ListView.separated(
+                      padding: EdgeInsets.all(16.h),
+                      itemBuilder: (context, index) {
+                        return GetBuilder<SmsController>(
+                            id: 'checkbox $index',
+                            builder: (controller) {
+                              return Row(
+                                children: [
+                                  AnimatedSwitcher(
+                                    duration: const Duration(milliseconds: 200),
+                                    transitionBuilder: (child, animation) {
+                                      return SizeTransition(
+                                        sizeFactor: animation,
+                                        axis: Axis.horizontal,
+                                        child: child,
+                                      );
                                     },
-                                    onLongPress: () {
-                                      if (controller.showCheckboxes == false) {
-                                        controller.toggleShowCheckboxes();
-                                        controller.toggleCheckboxIndex(
-                                          true,
-                                          index,
-                                        );
-                                      }
-                                    },
-                                    child: SmsCard(
-                                      model: controller.smsList[index],
+                                    child: controller.showCheckboxes
+                                        ? Padding(
+                                            padding: EdgeInsetsDirectional.only(
+                                                end: 5.w),
+                                            child: AppCheckbox(
+                                              value:
+                                                  controller.checkboxes[index],
+                                              onChanged: (v) {
+                                                controller.toggleCheckboxIndex(
+                                                  v ?? false,
+                                                  index,
+                                                );
+                                              },
+                                            ),
+                                          )
+                                        : const SizedBox(),
+                                  ),
+                                  Expanded(
+                                    child: GestureDetector(
+                                      onTap: () {
+                                        if (controller.showCheckboxes) {
+                                          controller.toggleCheckboxIndex(
+                                            !controller.checkboxes[index],
+                                            index,
+                                          );
+                                        }
+                                      },
+                                      onLongPress: () {
+                                        if (controller.showCheckboxes ==
+                                            false) {
+                                          controller.toggleShowCheckboxes();
+                                          controller.toggleCheckboxIndex(
+                                            true,
+                                            index,
+                                          );
+                                        }
+                                      },
+                                      child: SmsCard(
+                                        model: controller.smsList[index],
+                                      ),
                                     ),
                                   ),
-                                ),
-                              ],
-                            );
-                          });
-                    },
-                    separatorBuilder: (_, __) => SizedBox(
-                      height: 10.h,
+                                ],
+                              );
+                            });
+                      },
+                      separatorBuilder: (_, __) => SizedBox(
+                        height: 10.h,
+                      ),
+                      itemCount: controller.smsList.length,
                     ),
-                    itemCount: controller.smsList.length,
                   ),
                 ))),
           );

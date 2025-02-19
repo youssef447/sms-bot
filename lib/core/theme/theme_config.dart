@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-ThemeData appTheme = ThemeData(
-  useMaterial3: true,
+ThemeData appTheme = ThemeData.dark().copyWith(
+  scaffoldBackgroundColor: const Color(0xff081028),
   floatingActionButtonTheme: const FloatingActionButtonThemeData(
     backgroundColor: Color.fromARGB(255, 231, 208, 6),
   ),
@@ -32,35 +31,11 @@ ThemeData appTheme = ThemeData(
     surfaceContainer: const Color(0xff0b1739),
   ),
   textTheme: TextTheme(
-    displayLarge: GoogleFonts.aBeeZee(
-      fontSize: 20.sp,
-      fontWeight: FontWeight.bold,
-      color: Colors.white,
-    ),
-    displayMedium: GoogleFonts.cairo(
-      fontSize: 18.sp,
-      fontWeight: FontWeight.bold,
-      color: Colors.white,
-    ),
-    displaySmall: GoogleFonts.cairo(
-      fontSize: 16.sp,
-      fontWeight: FontWeight.bold,
-      color: Colors.white,
-    ),
-    headlineLarge: GoogleFonts.cairo(
-      fontSize: 14.sp,
-      fontWeight: FontWeight.bold,
-      color: Colors.white,
-    ),
-    headlineMedium: GoogleFonts.cairo(
-      fontSize: 12.sp,
-      fontWeight: FontWeight.bold,
-      color: Colors.white,
-    ),
-    headlineSmall: GoogleFonts.aBeeZee(
-      fontSize: 10.sp,
-      fontWeight: FontWeight.bold,
-      color: Colors.white,
-    ),
+    displayLarge: GoogleFonts.aBeeZee(),
+    displayMedium: GoogleFonts.cairo(),
+    displaySmall: GoogleFonts.cairo(),
+    headlineLarge: GoogleFonts.cairo(),
+    headlineMedium: GoogleFonts.cairo(),
+    headlineSmall: GoogleFonts.aBeeZee(),
   ),
 );

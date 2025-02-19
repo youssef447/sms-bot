@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
+import 'package:sms_sender/core/theme/app_text_style.dart';
 
 import '../../constants/app_assets.dart';
 
@@ -26,7 +27,7 @@ class NoDataGif extends StatelessWidget {
         ),
         Text(
           'No Data Found'.tr,
-          style: Theme.of(context).textTheme.displayLarge,
+          style: AppTextStyle.font20BoldText,
         ),
         SizedBox(
           height: 15.h,
@@ -39,7 +40,7 @@ class NoDataGif extends StatelessWidget {
           ),
           label: Text(
             'Retry',
-            style: Theme.of(context).textTheme.displaySmall,
+            style: AppTextStyle.font16BoldText,
           ),
         )
       ],

@@ -25,6 +25,9 @@ class SmsController extends GetxController {
   }
 
   Future<void> getSms() async {
+    loading = true;
+    update();
+    await Future.delayed(const Duration(seconds: 1));
     try {
       smsList = await telephony.getInboxSms(
         columns: [SmsColumn.ADDRESS, SmsColumn.BODY, SmsColumn.DATE],

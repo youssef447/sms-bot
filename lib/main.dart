@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:sms_sender/core/globals/globals.dart';
+import 'package:sms_sender/core/helpers/app_context.dart';
 import 'package:sms_sender/core/services/sms_service.dart';
 import 'package:sms_sender/presentation/ui/pages/sms_page.dart';
 
@@ -25,16 +26,13 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
-        minTextAdapt: true,
         designSize: const Size(375, 812),
         builder: (_, child) {
           return GetMaterialApp(
             title: 'SMS Bot',
             debugShowCheckedModeBanner: false,
             theme: appTheme,
-
-            //    locale:const Locale('ar'),
-
+            navigatorKey: AppContext.appNavKey,
             home: const SmsPage(),
           );
         });

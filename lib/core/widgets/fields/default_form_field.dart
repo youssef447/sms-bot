@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:sms_sender/core/theme/app_text_style.dart';
 
 /// Objectives: This file is responsible for providing default text form field widget that is used in the app.
 class AppTextFormField extends StatelessWidget {
@@ -100,15 +101,9 @@ class AppTextFormField extends StatelessWidget {
       cursorColor: Theme.of(context).colorScheme.primary,
       decoration: InputDecoration(
         helperText: helperText,
-        hintStyle: Theme.of(context)
-            .textTheme
-            .headlineLarge!
-            .copyWith(color: Colors.grey),
+        hintStyle: AppTextStyle.font12BoldText.copyWith(color: Colors.grey),
         isCollapsed: collapsed,
-        errorStyle: Theme.of(context)
-            .textTheme
-            .headlineSmall!
-            .copyWith(color: Colors.red),
+        errorStyle: AppTextStyle.font12BoldText.copyWith(color: Colors.red),
         labelText: labelText,
         label: label,
         contentPadding: contentPadding,
@@ -143,7 +138,7 @@ class AppTextFormField extends StatelessWidget {
         filled: true,
       ),
       obscureText: isObscureText ?? false,
-      style: Theme.of(context).textTheme.headlineLarge,
+      style: AppTextStyle.font14BoldText,
       validator: validator,
     );
   }

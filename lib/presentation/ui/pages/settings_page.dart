@@ -7,6 +7,7 @@ import 'package:sms_sender/core/helpers/validation_helper.dart';
 import 'package:sms_sender/core/widgets/animations/scale_animation.dart';
 import 'package:sms_sender/core/widgets/fields/default_form_field.dart';
 
+import '../../../core/theme/app_text_style.dart';
 import '../../controller/sms_settings_controller.dart';
 part '../widgets/settings_page/inputs_form.dart';
 
@@ -35,7 +36,7 @@ class SettingsPage extends StatelessWidget {
             )),
         title: Text(
           'Settings',
-          style: Theme.of(context).textTheme.displayLarge,
+          style: AppTextStyle.font20BoldText,
         ),
       ),
       body: SafeArea(
@@ -73,7 +74,7 @@ class SettingsPage extends StatelessWidget {
                           ),
                           child: Text(
                             'Save',
-                            style: Theme.of(context).textTheme.displayLarge,
+                            style: AppTextStyle.font18BoldText,
                           ),
                         ),
                       )

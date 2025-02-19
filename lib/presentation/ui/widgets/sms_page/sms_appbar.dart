@@ -16,9 +16,9 @@ class SmsAppbar extends StatelessWidget implements PreferredSizeWidget {
         children: [
           Text(
             'SMS Bot',
-            style: Theme.of(context).textTheme.displayLarge,
+            style: AppTextStyle.font20BoldText,
           ),
-          SizedBox(width: 6.w),
+          SizedBox(width: 12.w),
           SvgPicture.asset(
             AppAssets.message,
             color: Colors.yellow,

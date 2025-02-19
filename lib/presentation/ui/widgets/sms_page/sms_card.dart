@@ -22,14 +22,12 @@ class SmsCard extends StatelessWidget {
                 children: [
                   Text(
                     model.address!,
-                    style: Theme.of(context).textTheme.headlineLarge,
+                    style: AppTextStyle.font16BoldText,
                   ),
                   SizedBox(height: 6.h),
                   Text(
                     model.body!,
-                    style: Theme.of(context)
-                        .textTheme
-                        .headlineSmall!
+                    style: AppTextStyle.font12BoldText
                         .copyWith(color: Colors.grey),
                     maxLines: 3,
                     overflow: TextOverflow.ellipsis,
@@ -44,26 +42,26 @@ class SmsCard extends StatelessWidget {
                 Text(
                   DateFormatHelper.formatDate(
                       DateTime.fromMillisecondsSinceEpoch(model.date!)),
-                  style: Theme.of(context).textTheme.headlineSmall!.copyWith(
-                        fontWeight: FontWeight.w300,
-                      ),
+                  style: AppTextStyle.font12BoldText.copyWith(
+                    fontWeight: FontWeight.w300,
+                  ),
                 ),
                 SizedBox(height: 4.h),
                 Text(
                   DateFormatHelper.formatTime(
                       DateTime.fromMillisecondsSinceEpoch(model.date!)),
-                  style: Theme.of(context).textTheme.headlineSmall!.copyWith(
-                        fontWeight: FontWeight.w300,
-                      ),
+                  style: AppTextStyle.font12BoldText.copyWith(
+                    fontWeight: FontWeight.w300,
+                  ),
                 ),
                 SizedBox(height: 10.h),
                 Text(
-                  model.seen ?? false ? 'Seen' : 'Unseen',
+                  model.read ?? false ? 'Seen' : 'Unseen',
                   textAlign: TextAlign.end,
-                  style: Theme.of(context).textTheme.headlineSmall!.copyWith(
-                        fontWeight: FontWeight.w300,
-                        color: model.seen ?? false ? Colors.green : Colors.red,
-                      ),
+                  style: AppTextStyle.font10BoldText.copyWith(
+                    fontWeight: FontWeight.w300,
+                    color: model.seen ?? false ? Colors.green : Colors.red,
+                  ),
                 ),
               ],
             ),
